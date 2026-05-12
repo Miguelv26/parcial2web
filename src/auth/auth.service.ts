@@ -9,7 +9,11 @@ export class AuthService {
   register(dto: RegisterDto) {
     const apiKey = uuidv4();
     this.keys.set(apiKey, dto.email);
-    return { apiKey, ...dto };
+    return {
+      apiKey,
+      name: dto.name,
+      email: dto.email,
+    };
   }
 
   isValidKey(key: string): boolean {
